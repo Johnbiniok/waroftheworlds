@@ -17,6 +17,7 @@ public class Main {
     public Main() {
         String line;
         String[] words;
+        int usedOnce = 0;
 
         while ((line = indata.fileReadLine()) != null) {
             // Remove anything that's not a letter or space
@@ -45,10 +46,18 @@ public class Main {
             }
 
             // Loop over entries in the map, getting each key/value pair
-            for (Map.Entry<String, Integer> entry : map.entrySet()) {
+
+            //System.out.println(entry.getKey() + " " + entry.getValue());
+        }
+        for (Map.Entry<String, Integer> entry : map.entrySet()) {
+            if(entry.getValue() == 1){
+                usedOnce += 1;
+            }
+            if(entry.getValue() > 600){
                 System.out.println(entry.getKey() + " " + entry.getValue());
             }
         }
+        System.out.println("There are " + usedOnce + " used once.");
     }
     
 }
